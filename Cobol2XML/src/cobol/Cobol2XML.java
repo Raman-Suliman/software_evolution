@@ -46,12 +46,12 @@ public class Cobol2XML {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Cobol2XML V0.1.0");
 		XMLPayload xmlp = new XMLPayload();
-		
+		System.out.println("arg[0]" + args[0]);
 		/* The first command line parameter is used to get the cobol source file namee
 		 * In case you are not sure if you are pointing toward the right file, print out the filename
 		 * like this...
 		 *
-		 * System.out.println("arg[0]" + args[0])
+		 * 
 		 * 
 		 * A rather crude approach is to hard code the filename for the cobol source file, like this
 		 * InputStream is = new FileInputStream("C:\\Users\\sgs442\\eclipse-workspace\\CobolParser1\\base.cbl")
