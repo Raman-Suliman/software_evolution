@@ -2,7 +2,7 @@ identification division.
 program-id.  base.
 
 
-date-written.  07-mar-1995 - mb.
+date-written.  00-mar-1995 - mb.
 
 remarks.
 

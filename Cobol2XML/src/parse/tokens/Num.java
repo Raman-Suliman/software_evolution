@@ -46,6 +46,7 @@ public ArrayList<String> randomExpansion(int maxDepth, int depth) {
 	double d = Math.floor(1000.0 * Math.random()) / 10;
 	ArrayList<String> v = new ArrayList<String>();
 	v.add(Double.toString(d));
+	//System.out.println("d: " + d + " ------------- " + "Is empty?" + v.isEmpty() + " ----  " + v.get(0));
 	return v;
 }
 /**

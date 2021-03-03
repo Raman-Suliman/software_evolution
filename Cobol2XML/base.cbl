@@ -3,7 +3,7 @@ identification division.
 program-id.  base_jb.
 
 
-date-written.  7-jul-1995 - mb.
+date-written.  8-jul-1995 - mb.
 
 data division.
 working-storage section.

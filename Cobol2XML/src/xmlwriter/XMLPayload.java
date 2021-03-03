@@ -32,7 +32,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
+import org.w3c.dom.Attr;
 
 
 public class XMLPayload {
@@ -60,8 +60,22 @@ public class XMLPayload {
 	
 	public void addElements(Cobol c) {
 		/*
-		 *  add sectionName element
+		 *  add ConstantName element
 		 */		
+		String constantName = c.getConstantName();
+		if (constantName != null) {
+			this.addConstantValueElement( constantName, c.getConstantValue(), c.getLineNumber() );
+			//System.out.println("Got Section");
+			// Add contents of procedure division
+		 } 
+		else 
+		{
+			//System.out.println("Comment Line null");
+		} 
+		
+		/*
+		 *  add sectionName element
+		 */	
 		String sectionName = c.getSectionName();
 		if (sectionName != null) {
 			this.addSectionElement( sectionName );
@@ -122,7 +136,39 @@ public class XMLPayload {
 
 	}
 	
+	void addConstantValueElement(String constantName, 
+			double constantValue,	int lineNumber) {
+				//  Program ID element
+					
+				if(constantName != null) {
+					Element cobolname = doc.createElement("Constant");
 
+					// insert name of constant into XML file
+					Element constID = doc.createElement("Constant");
+					Attr attrType2 =	doc.createAttribute("Name" );
+					attrType2.setValue( constantName );
+					constID.setAttributeNode(attrType2);
+					cobolname.appendChild(constID);
+						
+					// insert line number of constant into XML file
+					Element lineID = doc.createElement(constantName);
+					Attr attrType =	doc.createAttribute("Line_Number" );
+					attrType.setValue( Integer.toString(lineNumber) );
+					lineID.setAttributeNode(attrType);
+					cobolname.appendChild(lineID);
+						
+					// insert value of constant into XML file
+					Element constantID = doc.createElement(constantName);
+					Attr attrType1 =	doc.createAttribute("Value" );
+					attrType1.setValue( Double.toString(constantValue) );
+					constantID.setAttributeNode(attrType1);
+					cobolname.appendChild(constantID);
+						
+					rootElement.appendChild(cobolname);
+				}
+			}
+
+	
  	void addProgram_IDElement(String stringElement) {
 		//  Program ID element
 		
